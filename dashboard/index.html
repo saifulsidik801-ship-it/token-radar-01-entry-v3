@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Token Radar C3 — pre-token protocols, fitted value, costed farm plans</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <div>
+    <h1>Token Radar <span class="c3">C3</span></h1>
+    <p class="sub">Pre-token protocols, ranked by fitted value — and what it costs to farm each one.</p>
+  </div>
+  <div class="meta" id="meta"></div>
+</header>
+
+<section class="hero" id="hero" aria-label="The model, proved">
+  <h2>The value model, proved above the table</h2>
+  <p class="formula" id="formula"></p>
+  <div class="hero-grid">
+    <div>
+      <h3>Out-of-sample, by variant</h3>
+      <table class="mini" id="variants"></table>
+      <p class="note" id="loo-note"></p>
+    </div>
+    <div>
+      <h3>Honesty checks</h3>
+      <ul class="checks" id="checks"></ul>
+    </div>
+    <div>
+      <h3>Best plans</h3>
+      <ol class="best" id="best"></ol>
+    </div>
+  </div>
+  <p class="verify" id="verify">Verifying the board in your browser…</p>
+</section>
+
+<nav class="tabs" aria-label="Board tabs">
+  <button id="tab-come" class="active" type="button">Still to come</button>
+  <button id="tab-trades" type="button">Already trades — anchors</button>
+</nav>
+
+<section class="controls" id="controls">
+  <input id="q" type="search" placeholder="Filter by name, chain or family…" aria-label="Filter protocols">
+  <label>Verdict
+    <select id="verdict">
+      <option value="">All verdicts</option>
+      <option>FARM</option>
+      <option>MARGINAL</option>
+      <option>SKIP</option>
+    </select>
+  </label>
+  <label>Family
+    <select id="family">
+      <option value="">All families</option>
+    </select>
+  </label>
+  <label>Sort
+    <select id="sort">
+      <option value="rank">Rank (implied value)</option>
+      <option value="net">Expected net $</option>
+      <option value="tvl">TVL</option>
+      <option value="odds">Launch odds</option>
+    </select>
+  </label>
+  <span class="count" id="count"></span>
+</section>
+
+<main>
+  <table class="board" id="board">
+    <thead><tr>
+      <th>#</th><th>Protocol</th><th>TVL</th><th>Implied value</th><th>Band P25–P75</th>
+      <th>Rank range</th><th>Launch odds</th><th>Deposit</th><th>Net $</th><th>Verdict</th>
+    </tr></thead>
+    <tbody id="rows"></tbody>
+  </table>
+  <table class="board" id="live" hidden>
+    <thead><tr>
+      <th>Protocol</th><th>Family</th><th>TVL</th><th>Market cap</th><th>× TVL</th><th>Curve value</th><th>Market / curve</th>
+    </tr></thead>
+    <tbody id="live-rows"></tbody>
+  </table>
+</main>
+
+<section class="detail" id="detail" hidden aria-label="Protocol detail"></section>
+
+<section class="method" id="method" aria-label="Method">
+  <h2>Method — every number on this page, and how it was earned</h2>
+  <div id="method-body"></div>
+</section>
+
+<footer>
+  <p>Built from the sealed snapshot of 14 November 2026 (758 protocols). No network, no hardcoded
+  names: the same function scores every row. Implied values are this entry's claim, never make.fun's.
+  A protocol that records no token may still have one its DefiLlama record does not carry.</p>
+</footer>
+
+<script src="../data.js"></script>
+<script src="model.js"></script>
+<script src="radar.js"></script>
+</body>
+</html>
